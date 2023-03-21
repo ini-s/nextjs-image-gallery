@@ -99,8 +99,8 @@ export default function Home({ data }: IGalleryProps) {
                 <Image
                   src={item.thumbnailUrl}
                   alt=""
-                  width={100}
-                  height={100}
+                  width={150}
+                  height={150}
                 />
               </GalleryItem>
             )
