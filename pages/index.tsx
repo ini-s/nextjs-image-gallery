@@ -28,6 +28,7 @@ export async function getStaticProps() {
     }
   }
 }
+
 const sizes = {
   tablet: '767px',
   laptop: '1024px',
@@ -44,7 +45,7 @@ const Gallery = styled.div`
 padding: 5rem 2rem;
 text-align: center;
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 gap: 1rem;
 `
 const GalleryItem = styled.div`
@@ -65,11 +66,13 @@ cursor: pointer;
 `
 
 export default function Home({ data }: IGalleryProps) {
-  const [postNo, setPostNo] = useState<number>(20)
+  const [postNo, setPostNo] = useState<number>(10)
+  const dataLength = data.length
+  console.log(dataLength)
+  console.log(postNo)
   const post = data.slice(0, postNo)
   function handleClick() {
-    setPostNo(prevNo => prevNo + 20)
-    console.log(data)
+    setPostNo(prevNo => prevNo + 10)
   }
 
   return (
@@ -100,9 +103,11 @@ export default function Home({ data }: IGalleryProps) {
             )
           })}
         </Gallery>
-        <Button onClick={handleClick}>
-          Load more
-        </Button>
+        {
+          postNo !== dataLength && <Button onClick={handleClick}>
+            Load more
+          </Button>
+        }
       </main>
     </>
   )
