@@ -71,8 +71,11 @@ export default function Home({ data }: IGalleryProps) {
   console.log(dataLength)
   console.log(postNo)
   const post = data.slice(0, postNo)
-  function handleClick() {
+  function loadMore() {
     setPostNo(prevNo => prevNo + 10)
+  }
+  function showLess() {
+    setPostNo(10)
   }
 
   return (
@@ -104,9 +107,10 @@ export default function Home({ data }: IGalleryProps) {
           })}
         </Gallery>
         {
-          postNo !== dataLength && <Button onClick={handleClick}>
-            Load more
-          </Button>
+          postNo !== dataLength ?
+            <Button onClick={loadMore}>Load more</Button>
+            :
+            <Button onClick={showLess}>Show Less</Button>
         }
       </main>
     </>
