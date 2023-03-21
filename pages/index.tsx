@@ -89,7 +89,7 @@ export default function Home({ data }: IGalleryProps) {
         <Gallery>
           {post.map(item => {
             return (
-              <GalleryItem>
+              <GalleryItem key={item.id}>
                 <Image
                   src={item.thumbnailUrl}
                   alt=""
